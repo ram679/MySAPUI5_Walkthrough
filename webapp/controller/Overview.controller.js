@@ -74,11 +74,11 @@ sap.ui.define([
 
         onBeforeRendering: function() {
 
-            alert("On Before Rendering called");
+            // alert("On Before Rendering called");
         },
 
         onAfterRendering: function() {
-           alert("On After Rendering called"); 
+        //    alert("On After Rendering called"); 
         },
 
         OnSearch: function() {
@@ -103,6 +103,28 @@ sap.ui.define([
             } else {
                 return "None";
             }
+        },
+        
+        //Open the Dialog  - Loading Fragment Dynamically
+        onOpenOrderDetails: function () {
+            
+            //Creating Fragment Dynamically
+            if (!this.MoreOrderDetailsDialog) {
+                this.MoreOrderDetailsDialog = this.loadFragment({
+                    name: "project1.view.fragments.MoreDetails"
+                });
+            }
+            //Open the Dialog
+            this.MoreOrderDetailsDialog.then(
+                function (oDialog) {
+                  oDialog.open();
+                }
+            );
+        },
+        
+        //Close the Dialog
+        onCloseOrderDetails: function () {
+            this.byId("ShowingMoreDetails").close();
         }
 
     });
