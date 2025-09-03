@@ -3,7 +3,6 @@
     xmlns:core="sap.ui.core"
     xmlns:layout="sap.ui.layout"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:f="sap.ui.core.fragment"
     xmlns:customData="sap.ui.core.CustomData">
 
 <Table id="idOrdersTable" items="{/SalesOrderSet}">
@@ -12,23 +11,23 @@
             <Title text="{/title}"></Title>            <!--Property Binding-->
             <ToolbarSpacer ></ToolbarSpacer>
             <SearchField width="20%" search=".OnSearch" value=""></SearchField>
-            <Button tooltip= "Sort" icon="sap-icon://sort" press=".OnSort"></Button>
-            <Button tooltip="Group" icon="sap-icon://group-2" press=".OnGroup"></Button>
+            <Button tooltip= "{i18n>sort}" icon="sap-icon://sort" press=".OnSort"></Button>
+            <Button tooltip="{i18n>group}" icon="sap-icon://group-2" press=".OnGroup"></Button>
         </OverflowToolbar>
     </headerToolbar>
 
     <columns>
         <Column>
-            <Text text="Sales Order Id"></Text>
+            <Text text="{i18n>salesOrderId}"></Text>
         </Column>
         <Column>
-            <Text text="Customer Name"></Text>
+            <Text text="{i18n>customerName}"></Text>
         </Column>
         <Column>
-            <Text text="Status"></Text>
+            <Text text="{i18n>status}"></Text>
         </Column>
         <Column>
-            <Text text="Gross Amount"></Text>
+            <Text text="{i18n>GrossAmount}"></Text>
         </Column>
     </columns>
 
