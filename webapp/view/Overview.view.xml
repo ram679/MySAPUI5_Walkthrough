@@ -1,71 +1,20 @@
 <mvc:View controllerName="project1.controller.Overview"
-    xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m">
+  <Page id="page" title="{i18n>title}">
+    <headerContent>
+      <Button id="RefreshButton" text="Refresh" type="Emphasized" />
+
+    </headerContent>
     <content>
-      <Table id="idOrdersTable" items="{/SalesOrderSet}">
-         <headerToolbar>
-           <OverflowToolbar id="idOverflow">
-             <Title text="{/title}"></Title>   <!--Property Binding-->
-             <ToolbarSpacer ></ToolbarSpacer>
-             <SearchField width="20%" search=".OnSearch" value=""></SearchField>
-             <Button tooltip= "Sort" icon="sap-icon://sort"    press=".OnSort"></Button>
-             <Button tooltip="Group" icon="sap-icon://group-2" press=".OnGroup"></Button>
-           </OverflowToolbar>
-         </headerToolbar>
 
-         <columns>
-           <Column>
-             <Text text="Sales Order Id"></Text>
-           </Column>
-            <Column>
-             <Text text="Customer Name"></Text>
-           </Column>
-           <Column>
-             <Text text="Status"></Text>
-           </Column>
-            <Column>
-             <Text text="Gross Amount"></Text>
-           </Column>
-         </columns>
+      <!-- Path - project name.folders one by one -->
+      <!-- Fragment Loading in XML File -->
+      <core:Fragment id="OrderDetails" fragmentName="project1.view.fragments.Orders" type="XML"
+        xmlns:core="sap.ui.core"/>
 
-         <items>
-           
-           <!-- <ColumnListItem type="Navigation">
-              <cells>
-                <ObjectIdentifier title="1"></ObjectIdentifier>
-                <Text text="Customer Name1"></Text>
-                <ObjectStatus text="Completed" icon="sap-icon://status-completed" state="Success"></ObjectStatus>
-                <ObjectNumber number="199" unit="USD"></ObjectNumber>
-              </cells>
-           </ColumnListItem>
-           <ColumnListItem type="Navigation">
-              <cells>
-                <ObjectIdentifier title="2"></ObjectIdentifier>
-                <Text text="Customer Name2"></Text>
-                <ObjectStatus text="Error" icon="sap-icon://status-error" state="Error"></ObjectStatus>
-                <ObjectNumber number="114" unit="USD"></ObjectNumber>
-              </cells>
-           </ColumnListItem>
-           <ColumnListItem type="Navigation">
-              <cells>
-                <ObjectIdentifier title="3"></ObjectIdentifier>
-                <Text text="Customer Name3"></Text>
-                <ObjectStatus text="Completed" icon="sap-icon://status-completed" state="Success"></ObjectStatus>
-                <ObjectNumber number="175" unit="USD"></ObjectNumber>
-              </cells>
-           </ColumnListItem> -->
-           <ColumnListItem type="Navigation">
-              <cells>
-                <ObjectIdentifier title="{SalesOrderId}"></ObjectIdentifier>
-                <Text text="{CustomerName}"></Text>
-                <ObjectStatus text="{LifeCycleStatusDescription}" icon="sap-icon://status-completed" state="{LifeCycleStatus}"></ObjectStatus>
-                <ObjectNumber number="{GrossAmount}" unit="{CurrencyCode}"></ObjectNumber>
-              </cells>             
-           </ColumnListItem>
-         </items>
-        <!-- View - responsible for defining and rendering the Ui and Notifies the controller or any event from Ui  -->
-      </Table>
+      <Button id="openFragment" text="Find More Details .." type="Neutral" class="sapUiSmallMarginBegin" press=".onOpenOrderDetails" />
+
     </content>
-    </Page>
+  </Page>
 </mvc:View>

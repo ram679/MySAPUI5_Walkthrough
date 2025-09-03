@@ -1,0 +1,74 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+  <Dialog id="ShowingMoreDetails" title="Confidential Information">
+    <Table id="idOrdersTable1" items="{/SalesOrderSet}">
+        <headerToolbar>
+            <OverflowToolbar id="idOverflow2">
+                <Title text="{/title}"></Title>                <!--Property Binding-->
+                <ToolbarSpacer ></ToolbarSpacer>
+                <SearchField width="20%" search=".OnSearch" value=""></SearchField>
+                <Button tooltip= "{i18n>sort}" icon="sap-icon://sort" press=".OnSort"></Button>
+                <Button tooltip="{i18n>group}" icon="sap-icon://group-2" press=".OnGroup"></Button>
+            </OverflowToolbar>
+        </headerToolbar>
+
+        <columns>
+            <Column>
+                <Text text="{i18n>salesOrderId}"></Text>
+            </Column>
+            <Column>
+                <Text text="{i18n>customerName}"></Text>
+            </Column>
+            <Column>
+                <Text text="{i18n>status}"></Text>
+            </Column>
+            <Column>
+                <Text text="{i18n>GrossAmount}"></Text>
+            </Column>
+        </columns>
+
+        <items>
+
+            <!-- <ColumnListItem type="Navigation">
+              <cells>
+                <ObjectIdentifier title="1"></ObjectIdentifier>
+                <Text text="Customer Name1"></Text>
+                <ObjectStatus text="Completed" icon="sap-icon://status-completed" state="Success"></ObjectStatus>
+                <ObjectNumber number="199" unit="USD"></ObjectNumber>
+              </cells>
+           </ColumnListItem>
+           <ColumnListItem type="Navigation">
+              <cells>
+                <ObjectIdentifier title="2"></ObjectIdentifier>
+                <Text text="Customer Name2"></Text>
+                <ObjectStatus text="Error" icon="sap-icon://status-error" state="Error"></ObjectStatus>
+                <ObjectNumber number="114" unit="USD"></ObjectNumber>
+              </cells>
+           </ColumnListItem>
+           <ColumnListItem type="Navigation">
+              <cells>
+                <ObjectIdentifier title="3"></ObjectIdentifier>
+                <Text text="Customer Name3"></Text>
+                <ObjectStatus text="Completed" icon="sap-icon://status-completed" state="Success"></ObjectStatus>
+                <ObjectNumber number="175" unit="USD"></ObjectNumber>
+              </cells>
+           </ColumnListItem> -->
+            <ColumnListItem type="Navigation">
+                <cells>
+                    <ObjectIdentifier title="{SalesOrderId}"></ObjectIdentifier>
+                    <Text text="{CustomerName}"></Text>
+                    <ObjectStatus text="{LifeCycleStatusDescription}" icon="sap-icon://status-completed" state="{LifeCycleStatus}"></ObjectStatus>
+                    <ObjectNumber number="{GrossAmount}" unit="{CurrencyCode}"></ObjectNumber>
+                </cells>
+            </ColumnListItem>
+        </items>
+        <!-- View - responsible for defining and rendering the Ui and Notifies the controller or any event from Ui  -->
+    </Table>
+
+    <beginButton>
+      <Button id="CloseButton" text="{i18n>closeDialog}" type="Default" press=".onCloseOrderDetails"></Button>
+    </beginButton>
+  
+  </Dialog>
+
+  
+</core:FragmentDefinition>
